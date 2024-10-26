@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+body {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.scenewrap {
+    display: block;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.scene {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+    background-image: url('https://puu.sh/qnenY/1644135b9c.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+#Crane {
+    max-width: 400px;
+    position: absolute;
+    left: 100px;
+    /* Adjusted to position on the ledge */
+    bottom: 317px;
+    /* Further raised to sit on the ledge */
+    z-index: 1;
+}
+
+#greentruck {
+    max-width: 250px;
+    position: absolute;
+    left: -250px;
+    bottom: 20px;
+    /* Aligned on the road */
+    z-index: 2;
+}
+
+#Mixer {
+    max-width: 130px;
+    position: absolute;
+    left: 1400px;
+    /* Adjust left position as needed */
+    bottom: 317px;
+    /* Position it on the ledge with the crane */
+    z-index: 2;
+    /* Ensure it's above the background */
+}
+
+.construction-message {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: #e74c3c;
+    background-color: #ffffff;
+    padding: 10px 30px;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    border: 2px solid #e74c3c;
+    animation: pulse 2s infinite;
+    z-index: 10;
+}
