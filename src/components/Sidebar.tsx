@@ -50,15 +50,17 @@ export const Sidebar = () => {
         </Link>
       </nav>
 
-      <div className="flex flex-col space-y-4">
+      <div className="flex items-center gap-4">
         <Button
           variant="ghost"
           size="icon"
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          className="w-10 h-10"
+          className="w-8 h-8"
         >
           {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
         </Button>
+
+        <span className="text-gray-400">•</span>
 
         <div className="flex gap-2">
           {config.socialLinks.map((link) => (
