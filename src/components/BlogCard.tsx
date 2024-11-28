@@ -36,7 +36,7 @@ export const BlogCard = ({
           <p className="text-gray-400">{excerpt}</p>
           <div className="flex items-center gap-2 text-gray-500">
             <Calendar size={16} />
-            <time>{time}</time>
+            <time>{date}</time>
           </div>
         </div>
         <img
