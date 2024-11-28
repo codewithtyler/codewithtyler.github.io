@@ -1,7 +1,7 @@
 import { Sidebar } from "@/components/Sidebar";
 import { RightSidebar } from "@/components/RightSidebar";
 import { useParams } from "react-router-dom";
-import { SAMPLE_POSTS } from "./Index";
+import { SAMPLE_POSTS } from "@/data/samplePosts";
 import {
   Breadcrumb,
   BreadcrumbItem,
