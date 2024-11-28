@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 export const Sidebar = () => {
   return (
     <div className="w-64 min-h-screen p-6 border-r border-gray-800">
-      <div className="flex flex-col items-center mb-8">
+      <div className="flex flex-col items-start mb-8">
         <img
           src="/placeholder.svg"
           alt="Profile"
           className="w-24 h-24 rounded-full mb-4"
         />
         <h1 className="text-xl font-bold mb-2">Tyler Hughes</h1>
-        <p className="text-sm text-gray-400 text-center">
+        <p className="text-sm text-gray-400 text-left">
           Software Engineer | Tech Content Creator | Full Nerd
         </p>
       </div>

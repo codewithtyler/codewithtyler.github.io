@@ -30,7 +30,7 @@ const Index = () => {
             <input
               type="search"
               placeholder="Search posts..."
-              className="px-4 py-2 bg-blog-card rounded-lg text-gray-300 focus:outline-none focus:ring-1 focus:ring-blog-accent"
+              className="w-full px-6 py-3 bg-blog-card rounded-lg text-gray-300 focus:outline-none focus:ring-1 focus:ring-blog-accent text-lg"
             />
           </div>
 
