@@ -1,0 +1,24 @@
+{
+  "profile": {
+    "name": "Tyler Hughes",
+    "bio": "Software Engineer | Tech Content Creator | Full Nerd",
+    "avatarPath": "/lovable-uploads/fe0e584b-ec4d-4aa8-b85b-2a8ad7d61c0d.png"
+  },
+  "socialLinks": [
+    {
+      "platform": "github",
+      "url": "https://github.com/tylerhughes",
+      "label": "GitHub Profile"
+    },
+    {
+      "platform": "twitter",
+      "url": "https://twitter.com/tylerhughes",
+      "label": "Twitter Profile"
+    },
+    {
+      "platform": "linkedin",
+      "url": "https://linkedin.com/in/tylerhughes",
+      "label": "LinkedIn Profile"
+    }
+  ]
+}
