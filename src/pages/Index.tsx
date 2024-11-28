@@ -2,6 +2,14 @@ import { BlogCard } from "@/components/BlogCard";
 import { Sidebar } from "@/components/Sidebar";
 import { RightSidebar } from "@/components/RightSidebar";
 import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import {
   Pagination,
   PaginationContent,
   PaginationItem,
@@ -10,6 +18,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 // Generate 26 sample posts
 const SAMPLE_POSTS = Array.from({ length: 26 }, (_, i) => ({
@@ -28,9 +37,16 @@ const POSTS_PER_PAGE = 8;
 
 const Index = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(SAMPLE_POSTS.length / POSTS_PER_PAGE);
+  const [searchParams] = useSearchParams();
+  const tag = searchParams.get("tag");
   
-  const paginatedPosts = SAMPLE_POSTS.slice(
+  const filteredPosts = tag 
+    ? SAMPLE_POSTS.filter(post => post.tags.includes(tag))
+    : SAMPLE_POSTS;
+
+  const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+  
+  const paginatedPosts = filteredPosts.slice(
     (currentPage - 1) * POSTS_PER_PAGE,
     currentPage * POSTS_PER_PAGE
   );
@@ -40,13 +56,21 @@ const Index = () => {
       <Sidebar />
       <main className="flex-1 p-6">
         <div className="max-w-4xl mx-auto">
-          <div className="relative mb-8">
-            <input
-              type="search"
-              placeholder="Search posts..."
-              className="w-1/2 px-6 py-3 bg-blog-card rounded-lg text-gray-300 focus:outline-none focus:ring-1 focus:ring-blog-accent text-lg"
-            />
-          </div>
+          <Breadcrumb className="mb-8">
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/">Home</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              {tag && (
+                <>
+                  <BreadcrumbItem>
+                    <BreadcrumbPage>Tag: {tag}</BreadcrumbPage>
+                  </BreadcrumbItem>
+                </>
+              )}
+            </BreadcrumbList>
+          </Breadcrumb>
 
           <div className="grid gap-6 mb-8">
             {paginatedPosts.map((post) => (
