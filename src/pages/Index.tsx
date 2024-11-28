@@ -1,12 +1,49 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { BlogCard } from "@/components/BlogCard";
+import { Sidebar } from "@/components/Sidebar";
+
+const SAMPLE_POSTS = [
+  {
+    title: "Weekend Wireless Wizardry",
+    excerpt: "This is how my weekends usually go... Watch Video Disclosures Ubiquiti devices were provided for testing.",
+    date: "Nov 22, 2024",
+    image: "/placeholder.svg",
+    slug: "weekend-wireless-wizardry",
+    tags: ["homelab", "networking"],
+  },
+  {
+    title: "Building the Ultimate Wireless Bridge",
+    excerpt: "I transformed my wireless bridge into a faster, more reliable network setup.",
+    date: "Nov 18, 2024",
+    image: "/placeholder.svg",
+    slug: "ultimate-wireless-bridge",
+    tags: ["homelab", "networking"],
+  },
+];
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="flex min-h-screen">
+      <Sidebar />
+      <main className="flex-1 p-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex justify-between items-center mb-8">
+            <h1 className="text-3xl font-bold">Latest Posts</h1>
+            <div className="relative">
+              <input
+                type="search"
+                placeholder="Search posts..."
+                className="px-4 py-2 bg-blog-card rounded-lg text-gray-300 focus:outline-none focus:ring-1 focus:ring-blog-accent"
+              />
+            </div>
+          </div>
+
+          <div className="grid gap-6">
+            {SAMPLE_POSTS.map((post) => (
+              <BlogCard key={post.slug} {...post} />
+            ))}
+          </div>
+        </div>
+      </main>
     </div>
   );
 };
