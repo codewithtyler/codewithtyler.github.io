@@ -50,7 +50,7 @@ export const Sidebar = () => {
         </Link>
       </nav>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center justify-start">
         <Button
           variant="ghost"
           size="icon"
@@ -59,9 +59,9 @@ export const Sidebar = () => {
         >
           {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
         </Button>
-
+        <div className="w-2" />
         <span className="text-gray-400">•</span>
-
+        <div className="w-2" />
         <div className="flex gap-2">
           {config.socialLinks.map((link) => (
             <a
