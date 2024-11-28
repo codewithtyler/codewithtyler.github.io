@@ -1,4 +1,4 @@
-import { Home, Info, ShoppingBag, Heart } from "lucide-react";
+import { Home, Info, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export const Sidebar = () => {
@@ -10,7 +10,7 @@ export const Sidebar = () => {
           alt="Profile"
           className="w-24 h-24 rounded-full mb-4"
         />
-        <h1 className="text-xl font-bold mb-2">Tech Blog</h1>
+        <h1 className="text-xl font-bold mb-2">Tyler Hughes</h1>
         <p className="text-sm text-gray-400 text-center">
           Software Engineer | Tech Content Creator | Full Nerd
         </p>
@@ -24,10 +24,6 @@ export const Sidebar = () => {
         <Link to="/about" className="sidebar-link">
           <Info size={20} />
           ABOUT
-        </Link>
-        <Link to="/merch" className="sidebar-link">
-          <ShoppingBag size={20} />
-          MERCH
         </Link>
         <Link to="/sponsor" className="sidebar-link">
           <Heart size={20} />

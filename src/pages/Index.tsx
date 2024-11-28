@@ -26,15 +26,12 @@ const Index = () => {
       <Sidebar />
       <main className="flex-1 p-6">
         <div className="max-w-4xl mx-auto">
-          <div className="flex justify-between items-center mb-8">
-            <h1 className="text-3xl font-bold">Latest Posts</h1>
-            <div className="relative">
-              <input
-                type="search"
-                placeholder="Search posts..."
-                className="px-4 py-2 bg-blog-card rounded-lg text-gray-300 focus:outline-none focus:ring-1 focus:ring-blog-accent"
-              />
-            </div>
+          <div className="relative mb-8">
+            <input
+              type="search"
+              placeholder="Search posts..."
+              className="px-4 py-2 bg-blog-card rounded-lg text-gray-300 focus:outline-none focus:ring-1 focus:ring-blog-accent"
+            />
           </div>
 
           <div className="grid gap-6">
