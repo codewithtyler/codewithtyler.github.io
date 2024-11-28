@@ -44,7 +44,7 @@ const BlogPost = () => {
             <img
               src={post.image}
               alt={post.title}
-              className="w-full h-[400px] object-cover rounded-lg mb-8"
+              className="w-full h-48 object-cover rounded-lg mb-8"
             />
             <div className="flex gap-2 mb-6">
               {post.tags.map((tag) => (
