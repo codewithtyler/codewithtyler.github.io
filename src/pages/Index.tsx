@@ -1,9 +1,9 @@
 import { BlogCard } from "@/components/BlogCard";
 import { Sidebar } from "@/components/Sidebar";
+import { RightSidebar } from "@/components/RightSidebar";
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
@@ -18,12 +18,13 @@ const SAMPLE_POSTS = Array.from({ length: 26 }, (_, i) => ({
     ? "This is how my weekends usually go... Watch Video Disclosures Ubiquiti devices were provided for testing."
     : "I transformed my wireless bridge into a faster, more reliable network setup.",
   date: `Nov ${(i % 28) + 1}, 2024`,
+  lastEdited: `2024-02-${(25 - i)}`, // Simulating last edited dates
   image: "/placeholder.svg",
   slug: `blog-post-${i + 1}`,
   tags: ["homelab", "networking"],
 }));
 
-const POSTS_PER_PAGE = 6;
+const POSTS_PER_PAGE = 8;
 
 const Index = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -93,6 +94,7 @@ const Index = () => {
           </Pagination>
         </div>
       </main>
+      <RightSidebar recentPosts={SAMPLE_POSTS.slice(0, 4)} />
     </div>
   );
 };

@@ -30,20 +30,6 @@ export const Sidebar = () => {
           SPONSOR
         </Link>
       </nav>
-
-      <div className="mt-8">
-        <h2 className="text-lg font-semibold mb-4">Trending Tags</h2>
-        <div className="flex flex-wrap gap-2">
-          {["homelab", "kubernetes", "docker", "linux"].map((tag) => (
-            <span
-              key={tag}
-              className="px-2 py-1 bg-gray-800 rounded-full text-sm text-gray-400 hover:bg-gray-700 cursor-pointer"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
     </div>
   );
 };
