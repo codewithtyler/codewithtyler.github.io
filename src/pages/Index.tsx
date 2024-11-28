@@ -1,26 +1,39 @@
 import { BlogCard } from "@/components/BlogCard";
 import { Sidebar } from "@/components/Sidebar";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+import { useState } from "react";
 
-const SAMPLE_POSTS = [
-  {
-    title: "Weekend Wireless Wizardry",
-    excerpt: "This is how my weekends usually go... Watch Video Disclosures Ubiquiti devices were provided for testing.",
-    date: "Nov 22, 2024",
-    image: "/placeholder.svg",
-    slug: "weekend-wireless-wizardry",
-    tags: ["homelab", "networking"],
-  },
-  {
-    title: "Building the Ultimate Wireless Bridge",
-    excerpt: "I transformed my wireless bridge into a faster, more reliable network setup.",
-    date: "Nov 18, 2024",
-    image: "/placeholder.svg",
-    slug: "ultimate-wireless-bridge",
-    tags: ["homelab", "networking"],
-  },
-];
+// Generate 26 sample posts
+const SAMPLE_POSTS = Array.from({ length: 26 }, (_, i) => ({
+  title: `Blog Post ${i + 1}`,
+  excerpt: i % 2 === 0 
+    ? "This is how my weekends usually go... Watch Video Disclosures Ubiquiti devices were provided for testing."
+    : "I transformed my wireless bridge into a faster, more reliable network setup.",
+  date: `Nov ${(i % 28) + 1}, 2024`,
+  image: "/placeholder.svg",
+  slug: `blog-post-${i + 1}`,
+  tags: ["homelab", "networking"],
+}));
+
+const POSTS_PER_PAGE = 6;
 
 const Index = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = Math.ceil(SAMPLE_POSTS.length / POSTS_PER_PAGE);
+  
+  const paginatedPosts = SAMPLE_POSTS.slice(
+    (currentPage - 1) * POSTS_PER_PAGE,
+    currentPage * POSTS_PER_PAGE
+  );
+
   return (
     <div className="flex min-h-screen">
       <Sidebar />
@@ -30,15 +43,54 @@ const Index = () => {
             <input
               type="search"
               placeholder="Search posts..."
-              className="w-full px-6 py-3 bg-blog-card rounded-lg text-gray-300 focus:outline-none focus:ring-1 focus:ring-blog-accent text-lg"
+              className="w-1/2 px-6 py-3 bg-blog-card rounded-lg text-gray-300 focus:outline-none focus:ring-1 focus:ring-blog-accent text-lg"
             />
           </div>
 
-          <div className="grid gap-6">
-            {SAMPLE_POSTS.map((post) => (
+          <div className="grid gap-6 mb-8">
+            {paginatedPosts.map((post) => (
               <BlogCard key={post.slug} {...post} />
             ))}
           </div>
+
+          <Pagination>
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious 
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setCurrentPage(p => Math.max(1, p - 1));
+                  }}
+                />
+              </PaginationItem>
+              
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <PaginationItem key={page}>
+                  <PaginationLink
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setCurrentPage(page);
+                    }}
+                    isActive={currentPage === page}
+                  >
+                    {page}
+                  </PaginationLink>
+                </PaginationItem>
+              ))}
+
+              <PaginationItem>
+                <PaginationNext 
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setCurrentPage(p => Math.min(totalPages, p + 1));
+                  }}
+                />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
         </div>
       </main>
     </div>
