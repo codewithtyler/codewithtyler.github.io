@@ -20,13 +20,8 @@ export const BlogCard = ({
 }: BlogCardProps) => {
   return (
     <Link to={`/blog/${slug}`} className="block">
-      <article className="blog-card">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-48 object-cover rounded-lg mb-4"
-        />
-        <div className="space-y-2">
+      <article className="blog-card flex gap-6">
+        <div className="flex-1 space-y-2">
           <div className="flex gap-2">
             {tags.map((tag) => (
               <span
@@ -41,9 +36,14 @@ export const BlogCard = ({
           <p className="text-gray-400">{excerpt}</p>
           <div className="flex items-center gap-2 text-gray-500">
             <Calendar size={16} />
-            <time>{date}</time>
+            <time>{time}</time>
           </div>
         </div>
+        <img
+          src={image}
+          alt={title}
+          className="w-48 h-32 object-cover rounded-lg"
+        />
       </article>
     </Link>
   );
